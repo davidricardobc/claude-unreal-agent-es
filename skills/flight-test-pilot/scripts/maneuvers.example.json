@@ -1,0 +1,54 @@
+{
+  "_nota": "Ejemplo ficticio. Unidades: segundos, metros, m/s. Stick: throttle 0..1; pitch, roll, yaw -1..1 (pitch +1 = nariz arriba).",
+  "sample_hz": 60,
+  "maneuvers": [
+    {
+      "id": "takeoff",
+      "duration_s": 12,
+      "setup": {"altitude_m": 0, "speed_mps": 0, "on_ground": true},
+      "steps": [
+        {"t0": 0, "t1": 12, "stick": {"throttle": 1.0}},
+        {"t0": 6, "t1": 12, "stick": {"throttle": 1.0, "pitch": 0.4}}
+      ],
+      "criteria": {"altitude_gained_m": {"min": 5}, "has_nan": {"equals": false}, "max_step_jump_m": {"max": 5}}
+    },
+    {
+      "id": "turn360",
+      "duration_s": 25,
+      "setup": {"altitude_m": 300, "speed_mps": 40},
+      "steps": [
+        {"t0": 0, "t1": 25, "stick": {"throttle": 0.7, "roll": 0.7, "pitch": 0.25}}
+      ],
+      "criteria": {"turn360_time_s": {"max": 20}, "altitude_lost_m": {"max": 60}, "max_step_jump_m": {"max": 5}}
+    },
+    {
+      "id": "loop",
+      "duration_s": 15,
+      "setup": {"altitude_m": 400, "speed_mps": 55},
+      "steps": [
+        {"t0": 0, "t1": 15, "stick": {"throttle": 1.0, "pitch": 0.8}}
+      ],
+      "criteria": {"loop_time_s": {"max": 12}, "altitude_lost_m": {"max": 80}}
+    },
+    {
+      "id": "dive_recovery",
+      "duration_s": 14,
+      "setup": {"altitude_m": 600, "speed_mps": 40},
+      "steps": [
+        {"t0": 0, "t1": 4, "stick": {"throttle": 0.3, "pitch": -0.6}},
+        {"t0": 4, "t1": 14, "stick": {"throttle": 0.6, "pitch": 0.6}}
+      ],
+      "criteria": {"altitude_lost_m": {"max": 350}, "settled_pitch_rate_rms": {"max": 8}, "max_speed_mps": {"max": 90}}
+    },
+    {
+      "id": "stall_recovery",
+      "duration_s": 20,
+      "setup": {"altitude_m": 500, "speed_mps": 35},
+      "steps": [
+        {"t0": 0, "t1": 8, "stick": {"throttle": 0.0, "pitch": 0.9}},
+        {"t0": 8, "t1": 20, "stick": {"throttle": 1.0, "pitch": -0.2}}
+      ],
+      "criteria": {"recover_speed_mps": 30, "stall_recovery_time_s": {"max": 6}, "altitude_lost_m": {"max": 250}, "has_nan": {"equals": false}}
+    }
+  ]
+}

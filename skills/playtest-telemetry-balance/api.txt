@@ -1,0 +1,2 @@
+# Llamadas unreal.* de esta skill (solo si se usa telemetry_logger.py dentro del editor). Verificar con hasattr o grep en Intermediate/PythonStub/unreal.py.
+Paths.project_saved_dir

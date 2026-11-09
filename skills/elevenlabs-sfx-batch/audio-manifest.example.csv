@@ -1,0 +1,16 @@
+id,categoria,prompt,segundos,loop,prompt_influence,tomas
+Click,UI,"Small plastic part snapping into place, one crisp click, close, dry, no music",0.6,0,0.7,2
+Confirm,UI,"Soft two-note confirmation chime, wooden toy xylophone, close, dry, no music",1.0,0,0.6,1
+Hover,UI,"Very short quiet tick of a plastic switch, close, dry, no music",0.5,0,0.7,1
+Foam,Mat,"Dry foam board tearing and bending, a short crunchy crack, close, no music",1.5,0,0.5,3
+Plastic,Mat,"Hollow plastic sheet cracking and folding, one sharp crack, close, dry, no music",1.5,0,0.5,3
+Splinter,Mat,"Thin balsa wood snapping with small splinters, one dry snap, close, no music",1.5,0,0.5,3
+Shot,Wpn,"Small spring toy launcher firing, one short pop with a quick air burst, dry, no music",1.0,0,0.7,2
+Impact,Wpn,"Light cardboard box being hit by a small foam dart, dull thud, close, dry, no music",1.0,0,0.6,2
+Whoosh,Wpn,"Quick paper whoosh passing by, one short pass, no music",1.0,0,0.5,2
+Meadow,Amb,"Open grass field on a calm morning, light wind, distant birds, gentle and steady, no music",15,1,0.4,1
+Workshop,Amb,"Quiet hobby workshop, faint room tone, occasional soft tool clicks, steady, no music",15,1,0.4,1
+Wind,Amb,"Steady medium wind blowing across an open space, no gusts, no music",12,1,0.4,1
+Start,Eng,"Small model engine starting up, quick spin-up that settles into a steady idle, close, dry, no music",2,0,0.6,2
+Cut,Eng,"Small model engine cutting off, quick spin-down with two short pops, close, dry, no music",2,0,0.6,2
+Crash,Game,"Small foam toy airplane crashing onto a wooden table, dull thump and light crunch, close, no music",2.0,0,0.5,2

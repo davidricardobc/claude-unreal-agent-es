@@ -1,0 +1,9 @@
+{
+  "defaults": {"origin": "third_party", "category": "Props", "collision": "convex", "nanite": false, "lods": 0},
+  "items": [
+    {"source": "C:/intake/crate.fbx", "base": "wood crate", "index": 1, "pack": "Kenney",
+     "target_max_cm": 120, "collision": "box"},
+    {"source": "C:/intake/statue.glb", "base": "statue", "index": 1, "origin": "ai",
+     "pack": "Meshy", "target_max_cm": 300, "nanite": true}
+  ]
+}

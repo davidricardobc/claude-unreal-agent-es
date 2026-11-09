@@ -1,0 +1,18 @@
+# Llamadas unreal.* de build-tile. Formato: Clase.miembro [func|prop]
+# func = se llama con (); prop = se lee/escribe con get/set_editor_property.
+# La sonda de ue-headless (api_probe.py) revisa que cada una sea lo que dice.
+# PCGComponent verificado en PCGComponent.h (UE 5.8). El resto: confirmar con la sonda.
+LevelEditorSubsystem.load_level func
+LevelEditorSubsystem.save_current_level func
+EditorActorSubsystem.spawn_actor_from_class func
+EditorActorSubsystem.get_all_level_actors func
+EditorActorSubsystem.destroy_actor func
+UnrealEditorSubsystem.get_editor_world func
+EditorAssetLibrary.load_asset func
+SystemLibrary.line_trace_single func
+PCGComponent.generate_local func
+PCGComponent.cleanup_local func
+PCGComponent.clear_pcg_link func
+PCGComponent.is_component_partitioned prop
+PCGComponent.seed prop
+LevelInstance.world_asset prop

@@ -1,0 +1,14 @@
+# Llamadas unreal.* de flight-test-pilot. Formato: Clase.miembro [func|prop], Clase o funcion (ver ue-headless/scripts/api_probe.py).
+# Confirmados en headers de 5.8: get_game_world, editor_request_begin_play/end_play, load_level, quit_editor.
+UnrealEditorSubsystem.get_game_world func
+LevelEditorSubsystem.load_level func
+LevelEditorSubsystem.editor_request_begin_play func
+LevelEditorSubsystem.editor_request_end_play func
+SystemLibrary.quit_editor func
+GameplayStatics.get_all_actors_with_tag func
+Paths.project_saved_dir func
+Vector
+Rotator
+register_slate_post_tick_callback
+unregister_slate_post_tick_callback
+# En el pawn del proyecto (UFUNCTION BlueprintCallable): set_virtual_stick, set_initial_speed

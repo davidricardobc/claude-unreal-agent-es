@@ -1,0 +1,4 @@
+{"succeeded":1,"failed":1,"tests":[
+{"testDisplayName":"A","fullTestPath":"Project.A","state":"Success","entries":[]},
+{"testDisplayName":"B","fullTestPath":"Project.B","state":"Skipped","entries":[]},
+{"testDisplayName":"C","fullTestPath":"Project.C","state":"Fail","entries":[{"event":{"type":"Error","message":"valor mal"}}]}]}

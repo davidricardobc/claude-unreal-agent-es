@@ -1,0 +1,23 @@
+# Llamadas unreal.* de asset-intake. Formato: Clase.miembro [func|prop] (ver ue-headless/scripts/api_probe.py)
+# Verificado en headers de 5.8: StaticMeshEditorSubsystem.add_simple_collisions (EScriptCollisionShapeType),
+# EditorAssetLibrary.save_asset(path, only_if_is_dirty) y rename_asset (no guarda). El resto: correr la sonda.
+AssetToolsHelpers.get_asset_tools func
+AssetImportTask.get_editor_property func
+FbxImportUI.static_mesh_import_data prop
+ScriptCollisionShapeType.BOX
+StaticMeshEditorSubsystem.add_simple_collisions func
+StaticMeshEditorSubsystem.remove_collisions func
+StaticMeshEditorSubsystem.set_convex_decomposition_collisions func
+StaticMeshEditorSubsystem.get_simple_collision_count func
+StaticMeshEditorSubsystem.set_lods func
+StaticMeshEditorSubsystem.get_lod_build_settings func
+StaticMeshEditorSubsystem.set_lod_build_settings func
+StaticMeshEditorSubsystem.get_nanite_settings func
+StaticMeshEditorSubsystem.set_nanite_settings func
+EditorScriptingMeshReductionOptions.reduction_settings prop
+EditorAssetLibrary.rename_asset func
+EditorAssetLibrary.rename_directory func
+EditorAssetLibrary.duplicate_directory func
+EditorAssetLibrary.list_assets func
+EditorAssetLibrary.save_asset func
+Paths.project_saved_dir func

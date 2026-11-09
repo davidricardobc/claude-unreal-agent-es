@@ -1,0 +1,6 @@
+[1/3] Compile Foo.cpp
+C:\Proj\Source\Game\Foo.cpp(123): error C2065: 'x': undeclared identifier
+C:\Proj\Source\Game\Foo.cpp(123): error C2065: 'x': undeclared identifier
+C:\Proj\Source\Game\Foo.h(9,5): fatal error C1083: Cannot open include file: 'Bar.h'
+Foo.obj : error LNK2019: unresolved external symbol Baz
+ERROR: UnrealHeaderTool failed for target 'GameEditor'

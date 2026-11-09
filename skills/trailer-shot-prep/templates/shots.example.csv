@@ -1,0 +1,10 @@
+moment,duration_s,camera_type,map,target,notes
+cold_open_action,2.5,dolly,/Game/Maps/DemoRange,HeroVehicle,Gancho: acción desde el primer fotograma
+title_card_wide,3,crane,/Game/Maps/DemoRange,HeroVehicle,Título en inglés sobre toma amplia
+vehicle_showcase,6,orbit,/Game/Maps/DemoRange,HeroVehicle,Silueta y color
+core_loop,8,dolly,/Game/Maps/DemoArena,PlayerStart,Mecánica principal en juego real
+big_moment,6,orbit,/Game/Maps/DemoArena,Landmark,Escala del mundo
+action_montage_a,3,static,/Game/Maps/DemoArena,PlayerStart,Corte rápido
+action_montage_b,3,crane,/Game/Maps/DemoRange,HeroVehicle,Corte rápido
+closing_hero,6,orbit,/Game/Maps/DemoRange,HeroVehicle,Último plano
+end_card,4,static,/Game/Maps/DemoRange,HeroVehicle,Nombre del juego y fecha

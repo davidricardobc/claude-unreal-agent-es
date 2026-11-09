@@ -1,0 +1,27 @@
+# Llamadas unreal.* de trailer-shot-prep (ver ue-headless/scripts/api_probe.py). Clase.miembro [func|prop] o Clase.
+# Verificado en headers de 5.8: add_spawnable_from_class de la secuencia (deprecada 5.5, existe) y del
+# subsistema (exige Sequencer abierto); MovieSceneBindingExtensions.is_valid (ScriptMethod).
+EditorActorSubsystem.get_all_level_actors
+LevelEditorSubsystem.load_level
+MovieSceneSequenceExtensions.add_spawnable_from_class func
+LevelSequenceEditorSubsystem.add_spawnable_from_class func
+MovieSceneBindingExtensions.is_valid func
+LevelSequenceFactoryNew
+LevelSequence
+MovieSceneSequenceExtensions.get_binding_id
+MovieSceneCameraCutTrack
+MovieSceneCameraCutSection.set_camera_binding_id
+MovieScene3DTransformTrack
+CineCameraActor
+FrameRate
+FrameNumber
+MoviePipelinePrimaryConfig
+MoviePipelineMasterConfig
+MoviePipelineConfigBase.find_or_add_setting_by_class
+MoviePipelineOutputSetting
+MoviePipelineDeferredPassBase
+MoviePipelineImageSequenceOutput_PNG
+MoviePipelineImageSequenceOutput_EXR
+MoviePipelineAppleProResOutput
+MoviePipelineAntiAliasingSetting
+MoviePipelineConsoleVariableSetting.add_or_update_console_variable

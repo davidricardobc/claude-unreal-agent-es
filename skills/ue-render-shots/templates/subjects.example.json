@@ -1,0 +1,12 @@
+{
+ "subjects": [
+  {"name": "ModeloA", "center": [0, 0, 100], "radius": 120},
+  {"name": "ModeloB", "center": [400, 0, 80], "radius": 90},
+  {"name": "ModeloC", "center": [800, 0, 60], "radius": 70}
+ ],
+ "shots": ["hero", "turntable:8", "lineup", "closeups",
+           {"name": "accion_picada", "loc": [-300, -500, 600], "rot": [-35, 60, 0]}],
+ "fov": 90,
+ "aspect": 1.7778,
+ "margin": 1.15
+}

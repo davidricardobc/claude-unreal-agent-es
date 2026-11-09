@@ -1,0 +1,15 @@
+ts,session,build,round,player_id,event,subject,value
+0.000,S1,0.1.0,1,p1,spawn,,0
+0.000,S1,0.1.0,1,p2,spawn,,0
+5.000,S1,0.1.0,1,p1,use,sword,1
+8.000,S1,0.1.0,1,p1,damage,sword,30
+12.000,S1,0.1.0,1,p2,use,bow,1
+15.000,S1,0.1.0,1,p2,damage,bow,10
+20.000,S1,0.1.0,1,p2,death,sword,1
+60.000,S1,0.1.0,1,p1,round_end,loadout_a,1
+60.000,S1,0.1.0,1,p2,round_end,loadout_b,0
+65.000,S1,0.1.0,2,p1,use,sword,1
+70.000,S1,0.1.0,2,p1,damage,sword,45
+90.000,S1,0.1.0,2,p2,death,storm,1
+120.000,S1,0.1.0,2,p1,round_end,loadout_a,1
+120.000,S1,0.1.0,2,p2,round_end,loadout_b,0

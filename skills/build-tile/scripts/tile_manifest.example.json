@@ -1,0 +1,23 @@
+{
+  "_note": "Funciona en un proyecto en blanco: solo formas básicas del motor. Reemplázalas por tus props. Tamaño 200 m, rejilla 50 m.",
+  "tile_id": "T01",
+  "level": "/Game/Tiles/L_Tile_T01",
+  "size_cm": [20000, 20000],
+  "grid_cm": 5000,
+  "snap_cm": 50,
+  "rotatable": true,
+  "edges": {
+    "N": {"profile": "flat", "height_cm": 0, "strip_cm": 2000},
+    "E": {"profile": "flat", "height_cm": 0, "strip_cm": 2000},
+    "S": {"profile": "flat", "height_cm": 0, "strip_cm": 2000},
+    "W": {"profile": "flat", "height_cm": 0, "strip_cm": 2000}
+  },
+  "placements": [
+    {"asset": "/Engine/BasicShapes/Cube", "location_cm": [0, 0, -50], "yaw": 0, "scale": [200, 200, 1]},
+    {"asset": "/Engine/BasicShapes/Cube", "location_cm": [-4000, -3000, 500], "yaw": 15, "scale": [10, 10, 10]},
+    {"asset": "/Engine/BasicShapes/Cylinder", "location_cm": [4000, 3500, 1000], "yaw": 0, "scale": [8, 8, 20]},
+    {"asset": "/Engine/BasicShapes/Cone", "location_cm": [3000, -5000, 750], "yaw": 0, "scale": [12, 12, 15]}
+  ],
+  "pcg": {"mode": "baked", "seed": "T01"},
+  "stats": {"triangles": 2000, "draw_calls": 10, "texture_mb": 1, "instances": 0}
+}

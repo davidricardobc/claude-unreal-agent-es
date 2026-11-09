@@ -1,0 +1,34 @@
+{
+  "_note": "Maniobras para references/FlightTestPawn (sin modelo de sustentación: el yaw gira, el pitch hace loops). Unidades: s, m, m/s. Stick: throttle 0..1 (0.5 mantiene la velocidad); pitch, roll, yaw -1..1.",
+  "sample_hz": 30,
+  "maneuvers": [
+    {
+      "id": "straight",
+      "duration_s": 4,
+      "setup": {"altitude_m": 30, "speed_mps": 20, "heading_deg": 0},
+      "steps": [{"t0": 0, "t1": 4, "stick": {"throttle": 0.5}}],
+      "criteria": {"has_nan": {"equals": false}, "altitude_lost_m": {"max": 1}, "min_speed_mps": {"min": 18}, "max_step_jump_m": {"max": 3}}
+    },
+    {
+      "id": "turn360",
+      "duration_s": 5,
+      "setup": {"altitude_m": 30, "speed_mps": 20, "heading_deg": 0},
+      "steps": [{"t0": 0, "t1": 5, "stick": {"throttle": 0.5, "yaw": 1.0}}],
+      "criteria": {"turn360_time_s": {"max": 3.5}, "altitude_lost_m": {"max": 1}}
+    },
+    {
+      "id": "loop",
+      "duration_s": 6,
+      "setup": {"altitude_m": 40, "speed_mps": 20, "heading_deg": 0},
+      "steps": [{"t0": 0, "t1": 6, "stick": {"throttle": 0.5, "pitch": 1.0}}],
+      "criteria": {"loop_time_s": {"max": 5}, "has_nan": {"equals": false}}
+    },
+    {
+      "id": "boost",
+      "duration_s": 3,
+      "setup": {"altitude_m": 30, "speed_mps": 20, "heading_deg": 0},
+      "steps": [{"t0": 0, "t1": 3, "stick": {"throttle": 1.0}}],
+      "criteria": {"max_speed_mps": {"min": 35}}
+    }
+  ]
+}

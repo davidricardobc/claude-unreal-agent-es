@@ -1,0 +1,9 @@
+# Llamadas unreal.* de esta skill. Una por linea: Clase.miembro. Verificar con hasattr o grep en Intermediate/PythonStub/unreal.py.
+DataTableFunctionLibrary.fill_data_table_from_csv_file
+DataTableFunctionLibrary.export_data_table_to_csv_file
+DataTableFunctionLibrary.get_data_table_row_names
+DataTableFunctionLibrary.get_data_table_row_struct
+DataTableFactory.struct
+EditorAssetLibrary.does_asset_exist
+EditorAssetLibrary.save_asset
+AssetToolsHelpers.get_asset_tools

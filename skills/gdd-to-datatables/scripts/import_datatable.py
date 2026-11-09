@@ -7,7 +7,8 @@ Parámetros por variables de entorno (el wrapper no pasa argumentos):
   KIT_DT_BACKUP  carpeta de respaldos (por defecto <proyecto>/Saved/DataTableBackups)
 ATENCIÓN: fill_data_table_from_csv_file VACIA la tabla antes de llenarla. Se respalda a CSV primero.
 KIT_OK solo si las filas importadas coinciden con el CSV; si no puede respaldar, falla sin tocar la tabla.
-Sin verificar contra 5.8: get_data_table_row_struct (correr api_probe o revisar PythonStub).
+Verificado en UE 5.8.4 (TableFlyer, ronda 8): la creación de la tabla y la importación (KIT_OK con 2 tablas).
+Sin probar: la rama de tabla existente (respaldo y get_data_table_row_struct; correr api_probe o revisar PythonStub).
 """
 import csv
 import os
@@ -48,7 +49,7 @@ if unreal.EditorAssetLibrary.does_asset_exist(asset):
     if not lib.export_data_table_to_csv_file(table, bak) or not os.path.isfile(bak):
         fail("no se pudo respaldar la tabla en %s; no se importa" % bak)
     print("KIT_INFO respaldo", bak)
-    if lib.get_data_table_row_struct(table) != struct:  # nombre de función sin verificar en 5.8
+    if lib.get_data_table_row_struct(table) != struct:  # rama sin ejecutar todavía; nombre confirmado en el header de 5.8
         fail("la tabla usa otro struct que %s; no se importa" % struct_path)
 else:
     folder, name = asset.rsplit("/", 1)

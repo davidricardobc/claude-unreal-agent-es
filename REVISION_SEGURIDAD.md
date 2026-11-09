@@ -1,6 +1,6 @@
 # Revisión de seguridad (9-nov-2026, ronda 9)
 
-Repo local, sin remoto, sin push. Nada se publica sin el sí explícito del dueño.
+Revisión hecha antes de publicar. Después el dueño publicó el repo y un segundo commit corrigió notas y una prueba (ver "Para saber antes de publicar").
 
 ## Cómo se limpió el repo
 
@@ -27,19 +27,19 @@ Este archivo se excluye de la búsqueda porque cita el patrón.
 
 | Patrón | Coincidencias | Qué son |
 |---|---|---|
-| `bajonero` | 3 | Línea de copyright de `LICENSE`, línea de autor del `README.md` y la autoría del commit. Permitido. |
-| `ricardo` | 2 | El usuario de GitHub `davidricardobc` en el enlace cruzado del `README.md` y en el correo de autoría del commit. Esperado. |
+| `bajonero` | 4 | Línea de copyright de `LICENSE`, línea de autor del `README.md` y la autoría de los dos commits. Permitido. |
+| `ricardo` | 3 | El usuario de GitHub `davidricardobc` en el enlace cruzado del `README.md` y en el correo de autoría de los dos commits. Esperado. |
 | `ja[m]` (cubre también las dos formas con mega) | 0 en texto | Un falso positivo en `examples/tableflyer/tableflyer_clip_14s.mp4` (bytes al azar de datos de video). |
 | `celis`, `C:\\CODEX`, `C:\\Users`, `@gmail`, `sk-` | 1 línea | Una prueba negativa, `skills/ue-mcp-safe-edit/tests/test_skill.py`, cuya expresión afirma que el texto de la skill NO tiene datos personales. No hay otra coincidencia de texto. `sk-` también tiene un falso positivo en `examples/tableflyer/damage_stages.jpg` (bytes al azar). |
 | `xi-api-key` | 2 | Nombre del encabezado HTTP en `skills/elevenlabs-sfx-batch/generate.mjs`. El valor sale de `getKey()`, que lee una variable de entorno y nunca la imprime. |
-| `[a-f0-9]{32}` | 0 en texto | En `git log -p` la única coincidencia es la línea del ID del commit (40 caracteres hexadecimales), un falso positivo. |
+| `[a-f0-9]{32}` | 0 en texto | En `git log -p` las únicas coincidencias son las dos líneas del ID de commit (40 caracteres hexadecimales), falsos positivos. |
 
 Revisiones extra, todas con 0 coincidencias: formatos de claves reales (`sk_` largo, hexadecimal de 32 o más, `AKIA`, `ghp_`, `xox`, `-----BEGIN`), correos en los archivos, archivos `.env`, `.pem`, `.key` y de credenciales. Una búsqueda de rutas más amplia (`C:[\\/]+(CODEX|Users)`) solo encuentra la misma línea de la prueba. Las únicas otras rutas con letra de unidad son ejemplos genéricos (`C:\Proj`, `C:/intake`, `C:\Program Files\Epic Games\UE_5.8`). Las URL de los archivos son locales (`127.0.0.1`), la base pública de la API de ElevenLabs, tres sitios públicos de assets usados como ejemplo y el enlace cruzado al otro repo. Las imágenes no tienen datos EXIF y el clip solo trae la etiqueta del codificador de ffmpeg.
 
 ## Para saber antes de publicar
 
 - Los mensajes de consola de los scripts siguen en español, el idioma original (los textos entre comillas son código y no se tradujeron).
-- Unas notas antiguas dentro de algunas skills todavía dicen "sin verificar" sobre partes que una sección posterior con fecha confirma (por ejemplo en `gdd-to-datatables` y `build-tile`). Vienen de la fuente.
+- Después de publicar se corrigieron las notas de "sin verificar" que una sección con fecha de la misma skill ya había confirmado (`trailer-shot-prep`, `ue-render-shots`, `gdd-to-datatables`, `build-tile`, `flight-test-pilot`, `metasound-engine-family`, `package-and-verify-build`), y se arregló una cadena de prueba con una letra mal codificada. Lo que sigue marcado "sin verificar" de verdad no se probó.
 - `elevenlabs-sfx-batch` tiene una compuerta de inicio opcional (`KIT_START`) apagada por defecto.
 - `asset-intake` trae reglas de licencia de Synty, que son públicas (no redistribuir, no subir a IA 3D). No se incluye ningún archivo de Synty.
 - Los renders y el clip son del proyecto de práctica TableFlyer (contenido propio).

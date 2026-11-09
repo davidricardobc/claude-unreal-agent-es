@@ -39,11 +39,11 @@ Scripts en `.claude/skills/gdd-to-datatables/scripts/` (solo biblioteca estánda
 
 ## Sin verificar (confirmar el día 1 con Unreal)
 
-- `export_data_table_to_csv_file`, `get_data_table_row_names` y `fill_data_table_from_csv_file` figuran en la referencia de Epic; `get_data_table_row_struct` confirmado en `DataTableFunctionLibrary.h` de 5.8. Lista completa en `api.txt`: verificar con la sonda compartida (`run-python.ps1 -Script .claude/skills/ue-headless/scripts/api_probe.py` con `KIT_API_SKILLS=gdd-to-datatables`, 1 minuto).
-- Que `DataTableFactory` con `factory.struct` cree la tabla en 5.8 (la propiedad figura en la doc; la creación se probó en 5.6).
-- Que el nombre de la primera columna del CSV sea irrelevante (se escribe `Name`).
+- `export_data_table_to_csv_file` (el respaldo) y `get_data_table_row_struct` (el struct de una tabla que ya existe) figuran en la referencia de Epic y, la segunda, en `DataTableFunctionLibrary.h` de 5.8, pero la rama de tabla existente no se ha ejecutado. Lista completa en `api.txt`: verificar con la sonda compartida (`run-python.ps1 -Script .claude/skills/ue-headless/scripts/api_probe.py` con `KIT_API_SKILLS=gdd-to-datatables`, 1 minuto).
 - Formato de línea de `DefaultGameplayTags.ini` y el módulo `GameplayTags` en `.Build.cs`.
 - Metadatos `ClampMin/ClampMax` en UPROPERTY no se aplican al importar CSV, solo al editar.
+
+Confirmado en TableFlyer (ronda 8, 9-nov-2026, UE 5.8.4), con 2 tablas importadas (8 y 7 filas, `KIT_OK`): `DataTableFactory` con `factory.struct` crea la tabla, `fill_data_table_from_csv_file`, `get_data_table_row_names` y la primera columna del CSV escrita como `Name`.
 
 ## Pruebas de la skill
 

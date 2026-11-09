@@ -1,6 +1,6 @@
 <#
 Plantilla: renderiza cada toma del manifest con Movie Render Queue por linea de comandos.
-No se ejecuto contra UE 5.8. Comando base de Epic: "Using Command Line Rendering with Movie Render Queue".
+Verificado en UE 5.8.4 (proyecto C++ en blanco, 9-nov-2026): 240 PNG a 1920x1080 con el editor cerrado. Comando base de Epic: "Using Command Line Rendering with Movie Render Queue".
 Primero: python shot_plan.py manifest shots.csv manifest.csv --out-dir <carpeta> ; luego build_sequences.py y make_mrq_preset.py.
 La carpeta de fotogramas debe ser la misma en el preset (KIT_TRAILER_OUT) y aqui. Si no se pasa -OutDir se usa la del manifest.
 

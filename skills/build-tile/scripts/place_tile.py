@@ -4,8 +4,8 @@ Uso con ue-headless/run-python.ps1. Se pasa el manifiesto por variable de entorn
   KIT_TILE_MANIFEST=C:\\ruta\\tile_T01.json
 Imprime una línea PLACED por prop, FAIL por problema y KIT_OK solo si todo salió bien.
 
-Todas las llamadas a la API `unreal.*` están SIN VERIFICAR en 5.8: si una falla,
-revisar Intermediate/PythonStub/unreal.py con grep.
+Verificado en UE 5.8.4 (proyecto C++ en blanco, 9-nov-2026) con tile_manifest.example.json (formas del motor).
+Lo que ese ejemplo no cubre sigue sin verificar: si una llamada falla, revisar Intermediate/PythonStub/unreal.py con grep.
 """
 import json
 import os
@@ -32,7 +32,7 @@ def main():
     if problems:
         return False
 
-    # Abrir el nivel de la loseta (sin verificar: LevelEditorSubsystem.load_level).
+    # Abrir el nivel de la loseta (LevelEditorSubsystem.load_level, verificado en 5.8.4).
     les = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
     if not les.load_level(m["level"]):
         print("FAIL no se pudo cargar " + m["level"])

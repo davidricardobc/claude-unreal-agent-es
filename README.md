@@ -102,7 +102,7 @@ Los scripts terminan con tokens estables: `KIT_OK`, `KIT_FAIL`, `SETUP_OK`, `FLI
 
 - Los mensajes de consola que imprimen los scripts están en español, el idioma original de los scripts. Los tokens y el código están en inglés. Los comentarios, los docstrings y toda la documentación están en español.
 - Solo Windows por ahora. Algunos pasos necesitan a una persona: iniciar sesión en servicios, escuchar el audio, el sí final para publicar.
-- Unas pocas notas antiguas dentro de algunas skills todavía dicen "sin verificar" sobre partes que una sección posterior de "Estado" o "Verificado en TableFlyer" confirma; la sección con fecha es el estado actual.
+- Todo lo que una skill marca como "sin verificar" todavía no se ha probado (por ejemplo las subidas con butler, los bloqueos de LFS en Azure DevOps, el juego en línea y el PCG horneado). Las partes que sí se probaron dicen dónde y cuándo.
 - `elevenlabs-sfx-batch` tiene una compuerta de inicio opcional (`KIT_START`, apagada por defecto) que bloquea la generación de audio del juego antes de una fecha, para concursos o hitos.
 
 ## Autor y licencia

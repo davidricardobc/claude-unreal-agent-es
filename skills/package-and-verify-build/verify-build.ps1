@@ -59,7 +59,7 @@ if (-not $SinSmoke) {
   if (-not (Test-Path $exePath)) { throw "No existe $exePath" }
   $inicio = Get-Date
   $stagedAbs = (Resolve-Path $Staged).Path.TrimEnd('\') + '\'
-  # El .exe de la raiz es un lanzador: el juego real es <Proyecto>\Binaries\Win64\<Proyecto>.exe (sin verificar en 5.8).
+  # El .exe de la raiz es un lanzador: el juego real es <Proyecto>\Binaries\Win64\<Proyecto>.exe (verificado en 5.8).
   # Se mide y se mata por ruta: cualquier proceso que viva dentro del staged.
   $dentro = { @(Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.Path -and $_.Path.StartsWith($stagedAbs, [StringComparison]::OrdinalIgnoreCase) }) }
   $p = Start-Process $exePath -ArgumentList "-log -windowed -ResX=1280 -ResY=720" -PassThru

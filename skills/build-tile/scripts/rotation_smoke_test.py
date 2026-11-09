@@ -3,20 +3,16 @@
 Por cada giro q (0, 90, 180, 270):
   (1) BORDES (pura): la loseta girada q debe encajar con una copia girada r, para todo r,
       en los dos ejes (E con W, N con S). Con rotatable=true esto exige 4 bordes iguales.
-  (2) COLISIÓN (editor): en un mapa de prueba vacío se crea un Level Instance de la loseta
-      con yaw=q, se trazan rayos hacia abajo en 5 puntos por borde (rotados con el mismo yaw)
-      y se exige colisión a la altura esperada. Se destruye el Level Instance al terminar.
+  (2) COLISIÓN (PIE): en un mapa de prueba vacío se ponen 4 Level Instances de la loseta (yaw 0/90/180/270),
+      se juega en PIE, se trazan rayos hacia abajo en 5 puntos por borde (rotados con el mismo yaw)
+      y se exige colisión a la altura esperada. Al final se borran las instancias (ver run_async).
 Imprime PASS/FAIL por cada giro y KIT_OK solo si los 4 pasan; KIT_FAIL si no.
 
 Entorno: KIT_TILE_MANIFEST (JSON), KIT_TEST_MAP (mapa vacío, ej. /Game/Maps/L_TileTest),
-KIT_TILE_TOL_CM (default 50), KIT_TILE_TRACE_TRIES (default 3) y KIT_TILE_TRACE_WAIT_S (default 1.0).
-Reintentos: la carga del Level Instance va por LevelInstanceSubsystem (RequestLoadLevelInstance y
-BlockLoadLevelInstance no están expuestos a Python), así que la colisión puede no existir en la
-primera traza. Cada punto se reintenta antes de fallar. Si sigue "sin colisión" tras los reintentos,
-repetir la prueba en PIE antes de dar la loseta por mala.
+KIT_TILE_TOL_CM (default 50) y KIT_TILE_PIE_WAIT_S (segundos de espera en PIE para que carguen las instancias, default 4).
 Parte pura sin UE:  python rotation_smoke_test.py --pure manifiesto.json
-Llamadas `unreal.*` SIN VERIFICAR en 5.8 (ver api.txt). Repetir en PIE y en build empaquetado:
-la colisión de Landscape en niveles girados está reportada como frágil (evidencia floja).
+Verificado en UE 5.8.4 (proyecto C++ en blanco, 9-nov-2026: 4/4 giros). Sin probar: un build empaquetado
+y la colisión de Landscape en niveles girados (reportada como frágil, evidencia floja).
 """
 import json
 import math

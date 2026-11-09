@@ -1,6 +1,6 @@
 """Corre maniobras guionadas en PIE y guarda un CSV por maniobra. Se ejecuta DENTRO de Unreal (Python de editor).
 Verificado en UE 5.8.4 (9-nov-2026): corrió de punta a punta en un proyecto C++ en blanco con
-references/FlightTestPawn (4/4 maniobras, KIT_OK) y en TableFlyer (5/5). Las marcas SV de abajo quedaron confirmadas.
+references/FlightTestPawn (4/4 maniobras, KIT_OK) y en TableFlyer (5/5). Las llamadas que antes llevaban la marca SV quedaron confirmadas.
 
 KIT_OK solo sale cuando TODAS las maniobras corrieron y pasaron sus criterios. Todo lo demás imprime
 KIT_FAIL <motivo> (pawn sin SetVirtualStick, setup imposible, criterios fallidos, tiempo agotado).
@@ -35,12 +35,12 @@ from flight_session import CSV_HEADER, PawnError, Session, sample_row  # noqa: E
 
 def get_world(unreal):
     """Mundo de juego (PIE). Subsistema vigente con respaldo a la clase deprecada."""
-    sub = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem)  # SV
+    sub = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem)
     return sub.get_game_world()
 
 
 def load_level(unreal, path):
-    sub = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)  # SV
+    sub = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
     return sub.load_level(path)
 
 
@@ -59,8 +59,8 @@ class UePawn:
             raise PawnError("el setup pide %.0f m/s y el pawn no expone SetInitialSpeed (set_initial_speed)" % speed)
         u = self.u
         loc = u.Vector(self.home.x, self.home.y, float(setup.get("altitude_m", self.home.z / 100.0)) * 100.0)
-        rot = u.Rotator(0.0, 0.0, float(setup.get("heading_deg", 0.0)))  # Rotator(roll, pitch, yaw) SV: orden de argumentos
-        self.a.set_actor_location_and_rotation(loc, rot, False, True)  # SV: sweep False, teleport True
+        rot = u.Rotator(0.0, 0.0, float(setup.get("heading_deg", 0.0)))  # Rotator(roll, pitch, yaw): orden de argumentos (verificado en 5.8.4)
+        self.a.set_actor_location_and_rotation(loc, rot, False, True)  # sweep False, teleport True
         if hasattr(self.a, "set_initial_speed"):
             self.a.set_initial_speed(speed * 100.0)  # también pone a 0 si speed es 0
 
@@ -104,7 +104,7 @@ def main():
         print("\n".join("KIT_INFO " + line for line in session.report))
         print(session.final_line())  # única salida de KIT_OK
         try:
-            unreal.unregister_slate_post_tick_callback(box["handle"])  # SV
+            unreal.unregister_slate_post_tick_callback(box["handle"])
             unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).editor_request_end_play()
             if os.environ.get("KIT_FLIGHT_KEEP_EDITOR") != "1":
                 unreal.SystemLibrary.quit_editor()
@@ -131,7 +131,7 @@ def main():
             close()
 
     box["handle"] = unreal.register_slate_post_tick_callback(on_tick)
-    unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).editor_request_begin_play()  # SV
+    unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).editor_request_begin_play()
     print("KIT_INFO PIE pedido; maniobras: %s (el resultado sale al final)" % ", ".join(m["id"] for m in maneuvers))
     return 0  # sin KIT_OK: el veredicto lo da close()
 

@@ -100,9 +100,9 @@ La regla acepta butler para builds grandes, así que 1 GB no es un muro. Aun as�
 - No subir un zip de otro nombre al formulario: debe ser `<TeamName>_<GameName>`. Nunca subir el que bajó de itch tras un butler push.
 - Si una clave sale en un log público, revocarla.
 
-## Sin verificar (confirmar el día 1)
+## Sin verificar
 
-- (Confirmado el 8-nov en la máquina: banderas, salida en `<Salida>\Windows\`, lanzador `<Proyecto>.exe` en la raíz, juego real en `<Proyecto>\Binaries\Win64\`, log en `<Proyecto>\Saved\Logs\`.)
+- Confirmado el 8-nov-2026 en la máquina: banderas, salida en `<Salida>\Windows\`, lanzador `<Proyecto>.exe` en la raíz, juego real en `<Proyecto>\Binaries\Win64\`, log en `<Proyecto>\Saved\Logs\`. Confirmado el 9-nov-2026 en un proyecto C++ en blanco: compilación, zip de 0,37 GiB y smoke test con sonido.
 - Si el zip debe llevar carpeta raíz. El comando actual es `7z a ... .\Windows\*` (sin carpeta).
 - `--no-auto-unzip` de butler: `butler push --help`.
 - Que `butler` necesita la página creada antes del primer push.

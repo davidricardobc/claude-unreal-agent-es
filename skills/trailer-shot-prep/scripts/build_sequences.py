@@ -1,5 +1,6 @@
 """Crea un Level Sequence con CineCamera por cada toma del CSV. Corre DENTRO de Unreal (Python de editor).
-Sin verificar contra UE 5.8: lo marcado SV (ver api.txt). Nada de esto se ha corrido en Unreal.
+Verificado en UE 5.8.4 (proyecto C++ en blanco y TableFlyer, 9-nov-2026; ver SKILL.md, "Estado"). Sin verificar: lo marcado SV
+(la búsqueda del actor `target` y el orden de los canales de la transformación).
 
 Uso (wrapper de ue-headless, que busca KIT_OK):
   powershell -File .claude/skills/ue-headless/scripts/run-python.ps1 -UERoot "<UE_ROOT>" -Project "<ProyectoDir>\\<Proyecto>.uproject" -Script ".claude/skills/trailer-shot-prep/scripts/build_sequences.py"
@@ -25,7 +26,7 @@ def get_actors(unreal):
 
 
 def load_level(unreal, path):
-    ok = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).load_level(path)  # SV
+    ok = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).load_level(path)
     if ok is False:
         raise RuntimeError("load_level devolvió False")
 
@@ -104,7 +105,7 @@ def build_one(unreal, shot, radius, rebuild):
     cut_track = seq.add_track(unreal.MovieSceneCameraCutTrack)
     cut = cut_track.add_section()
     cut.set_range(0, shot["frames"])
-    cut.set_camera_binding_id(seq.get_binding_id(cam))  # SV: make_binding_id no existe en 5.x
+    cut.set_camera_binding_id(seq.get_binding_id(cam))  # make_binding_id no existe en 5.x (verificado en 5.8.4)
 
     # Transformación por claves. Orden de canales (SV): loc X,Y,Z, rot X=roll, Y=pitch, Z=yaw, scale X,Y,Z
     tr = cam.add_track(unreal.MovieScene3DTransformTrack)

@@ -89,7 +89,7 @@ Constantes por familia (van en el preset): `BaseHz`, `SpanSt`, `SizeSt`, pesos d
 ## Pruebas y "sin verificar"
 
 - Pruebas sin Unreal: `python -I -m unittest discover -s .claude/skills/metasound-engine-family/tests`.
-- Sin verificar en 5.8 (1 a 2 minutos cada una): nombre Python del render timing (`dir(unreal.MetasoundGeneratorHandle)` en la consola Python del editor); entradas de la Builder API (`dir(unreal.MetaSoundBuilderSubsystem)`); estado de UE-393204 (buscar el ticket en el foro de Epic). Los números de familias son criterio propio. El C++ no se compiló.
+- Sin verificar en 5.8 (1 a 2 minutos cada una): nombre Python del render timing (`dir(unreal.MetasoundGeneratorHandle)` en la consola Python del editor); estado de UE-393204 (buscar el ticket en el foro de Epic). Los números de familias son criterio propio. El C++ no se compiló.
 
 ## Verificado en TableFlyer (ronda 8, 9-nov-2026, UE 5.8.4)
 

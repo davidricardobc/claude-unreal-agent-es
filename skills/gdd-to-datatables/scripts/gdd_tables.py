@@ -150,7 +150,7 @@ def normalize_table(title, header, rows, warnings=None, prefix=""):
 
 
 def write_csv(path, cols, rows):
-    """UTF-8 con BOM, fin de línea LF. Primera columna 'Name' (UE ignora su nombre; sin verificar)."""
+    """UTF-8 con BOM, fin de línea LF. Primera columna 'Name' (verificado en 5.8.4: la importación con ese nombre funciona)."""
     cols = ["Name"] + list(cols[1:])
     with open(path, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f, lineterminator="\n")

@@ -40,7 +40,7 @@ test('validateManifest: filas malas', () => {
 
 test('validateManifest: falta columna y avisos', () => {
   assert.match(validateManifest('id,prompt\nA,x').errors.join(), /falta la columna/);
-  const w = validateManifest('id,categoria,prompt,segundos,loop\nA,UI,sonido en espaÃ±ol,1,1\n').warnings.join();
+  const w = validateManifest('id,categoria,prompt,segundos,loop\nA,UI,sonido en español,1,1\n').warnings.join();
   assert.match(w, /ASCII/);
   assert.match(w, /bucle de menos de 2 s/);
 });

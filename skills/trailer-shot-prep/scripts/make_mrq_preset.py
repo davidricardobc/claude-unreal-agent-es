@@ -1,5 +1,6 @@
 """Crea el preset de Movie Render Queue para tráiler: 1920x1080 mínimo, 60 fps, formato de edición.
-Corre DENTRO de Unreal (Python de editor). Sin verificar contra UE 5.8: lo marcado SV. Nada se ha corrido en Unreal.
+Corre DENTRO de Unreal (Python de editor). Verificado en UE 5.8.4 (proyecto C++ en blanco, 9-nov-2026: preset PNG y render real de 240 PNG).
+Sin verificar: lo marcado SV (el formato prores y las variables de consola).
 
 Variables de entorno (todas opcionales):
   KIT_TRAILER_PRESET    nombre del asset (por defecto TrailerHD60), en /Game/Cine/Presets
@@ -57,24 +58,24 @@ def main():
         print("KIT_OK")
         return 0
 
-    cls = getattr(unreal, "MoviePipelinePrimaryConfig", None) or getattr(unreal, "MoviePipelineMasterConfig", None)  # SV: el nombre cambió entre versiones
+    cls = getattr(unreal, "MoviePipelinePrimaryConfig", None) or getattr(unreal, "MoviePipelineMasterConfig", None)  # el nombre cambió entre versiones
     if cls is None:
         print("KIT_FAIL no hay clase de config de MRQ; activar el plugin Movie Render Queue")
         return 1
-    cfg = unreal.AssetToolsHelpers.get_asset_tools().create_asset(name, PRESET_DIR, cls, None)  # SV: puede pedir factory
+    cfg = unreal.AssetToolsHelpers.get_asset_tools().create_asset(name, PRESET_DIR, cls, None)  # create_asset con factory None funciona en 5.8.4
     if cfg is None:
         print("KIT_FAIL no se pudo crear el asset de config")
         return 1
 
-    out = cfg.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)  # SV
+    out = cfg.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)
     out.output_resolution = unreal.IntPoint(w, h)
     out.use_custom_frame_rate = True
     out.output_frame_rate = unreal.FrameRate(60, 1)
     out.output_directory = unreal.DirectoryPath(out_dir)
     out.file_name_format = "{sequence_name}.{frame_number}"
-    out.zero_pad_frame_numbers = 4  # SV
+    out.zero_pad_frame_numbers = 4
 
-    cfg.find_or_add_setting_by_class(unreal.MoviePipelineDeferredPassBase)  # SV
+    cfg.find_or_add_setting_by_class(unreal.MoviePipelineDeferredPassBase)
     fmt_cls = {
         "png": "MoviePipelineImageSequenceOutput_PNG",
         "exr": "MoviePipelineImageSequenceOutput_EXR",
@@ -85,7 +86,7 @@ def main():
         return 1
     cfg.find_or_add_setting_by_class(getattr(unreal, fmt_cls))
 
-    aa = cfg.find_or_add_setting_by_class(unreal.MoviePipelineAntiAliasingSetting)  # SV
+    aa = cfg.find_or_add_setting_by_class(unreal.MoviePipelineAntiAliasingSetting)
     aa.spatial_sample_count = 1
     aa.temporal_sample_count = temporal
     aa.override_anti_aliasing = True

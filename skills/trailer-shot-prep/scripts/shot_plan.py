@@ -125,7 +125,7 @@ def camera_keys(camera_type, center, radius, duration_s, fps=FPS, height=None):
 
 
 def ffmpeg_commands(shots, frames_dir, fps=FPS, crf=14):
-    """Comandos para pasar cada secuencia PNG a MP4 intermedio y unirlos. Sin verificar el patrón del nombre de archivo."""
+    """Comandos para pasar cada secuencia PNG a MP4 intermedio y unirlos. El patrón del nombre de archivo (LS_01_x.0000.png) está verificado en UE 5.8.4."""
     cmds, lst = [], []
     for s in shots:
         src = os.path.join(frames_dir, s["seq_name"] + ".%04d.png").replace("\\", "/")

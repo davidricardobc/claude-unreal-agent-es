@@ -45,7 +45,7 @@ Sin Movie Render Queue frágil: se reusa `trailer-shot-prep`, que crea la secuen
 1. CSV de una o dos filas (`moment,duration_s,camera_type,map,target`), por ejemplo `turntable,8,orbit,/Game/Maps/X,<etiqueta del actor>`.
 2. `python .claude/skills/trailer-shot-prep/scripts/shot_plan.py check clip.csv --min-s 5 --max-s 20`.
 3. Seguir los pasos 3 a 7 de `trailer-shot-prep` con `KIT_TRAILER_MIN_S=5` y `KIT_TRAILER_MAX_S=20`.
-Estado: sin verificar en la máquina (ver abajo). Si falla, la alternativa es grabar la pantalla del turntable en PIE.
+Estado: verificado el 9-nov-2026 en UE 5.8.4 con `trailer-shot-prep` (proyecto C++ en blanco: 240 PNG a 1920x1080 con el editor cerrado y `VIDEO_OK`). Si falla, la alternativa es grabar la pantalla del turntable en PIE.
 
 ## Regla de distancia de cámara (verificada, rondas 3 a 7 de TableFlyer)
 
@@ -73,6 +73,5 @@ Estado: sin verificar en la máquina (ver abajo). Si falla, la alternativa es gr
 - El argumento de actor de `get_actor_bounds` (`{"refPath": ruta}`) y la forma del `Box` que devuelve. Verificar: `describe_toolset editor_toolset.toolsets.actor.ActorTools` y un `bounds` con un actor.
 - El ciclo completo de `editor_highres.py` y que `py "<script>" "<json>"` pase el argumento a `sys.argv`. Verificar con un plan de 1 toma: debe salir el PNG con el tamaño pedido.
 - Que `HighResShot` en el viewport del editor respete Game View. Verificar con una toma con un trigger a la vista.
-- El clip: `render-shots.ps1` de `trailer-shot-prep` no se ha corrido en la máquina. Verificar con una toma de 5 s.
 
 API verificada en headers de 5.8: `EditorAppToolset.h` (CaptureViewport, sin herramienta de consola), `UnrealEditorSubsystem.h` (set_level_viewport_camera_info), `KismetSystemLibrary.h` (ExecuteConsoleCommand), `UnrealClient.cpp` (`HighResShot WxH filename=`), `actor.py` (get_actor_bounds), `PySlate.cpp` (register_slate_post_tick_callback).
